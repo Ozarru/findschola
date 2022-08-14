@@ -1,0 +1,171 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<!-- Header Start -->
+<div class="container-fluid header bg-white p-0">
+  <div
+    class="row g-0 align-items-center flex-column-reverse flex-md-row"
+    id="bg-color"
+  >
+    <div class="col-md-6 p-5 mt-lg-5">
+      <h1 class="display-5 animated fadeIn mb-4">Demandes & Offres</h1>
+      <nav aria-label="breadcrumb animated fadeIn">
+        <ol class="breadcrumb text-uppercase">
+          <li class="breadcrumb-item">
+            <a href="{% url 'home' %}">Accueil</a>
+          </li>
+          <li class="breadcrumb-item"><a>INFOS</a></li>
+          <li class="breadcrumb-item text-body active" aria-current="page">
+            Demandes & Offres
+          </li>
+        </ol>
+      </nav>
+      <p class="animated fadeIn mb-4 pb-2">
+        Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd
+        rebum ipsum et diam justo clita et kasd rebum sea elitr.
+      </p>
+    </div>
+    <div class="col-md-6 animated fadeIn">
+      <div class="owl-carousel header-carousel">
+        <!-- <div class="owl-carousel-item">
+          <img class="img-fluid" src="{% static 'img/ask.jpg' %}" alt="" />
+        </div> -->
+        <div class="owl-carousel-item">
+          <img class="img-fluid" src="{% static 'img/offer.jpg' %}" alt="" />
+        </div>
+        <div class="owl-carousel-item">
+          <img class="img-fluid" src="{% static 'img/job.jpg' %}" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Header End -->
+<div class="container">
+  <div class="row g-0 gx-5 align-items-center">
+    <div
+      class="col-lg-12 col-sm-12 text-start text-lg wow slideInRight"
+      data-wow-delay="0.1s"
+      id="tabs-price"
+    >
+      <ul class="nav nav-pills d-inline-flex justify-content-end my-5">
+        <li class="nav-item me-2">
+          <a
+            class="btn btn-outline-primary active"
+            data-bs-toggle="pill"
+            href="#tab-1"
+            >Demandes
+          </a>
+        </li>
+        <li class="nav-item me-2">
+          <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2"
+            >Offres</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="tab-content container-xxl py-5">
+    <!-- demands -->
+    <div id="tab-1" class="tab-pane fade show p-0 active">
+      <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+        Demandes récentes
+      </h1>
+      <div class="row g-4">
+        {% for demand in demands %}
+        <div class="col-lg-4 col-md-6">
+          <div class="container">
+            <div class="job-item p-4 mb-4">
+              <div class="row g-4">
+                <div
+                  class="col-lg-6 col-sm-12 col-md-8 d-flex align-items-center"
+                >
+                  <img
+                    class="flex-shrink-0 img-fluid border rounded"
+                    src="{% static 'img/demande.jpg' %}"
+                    alt=""
+                    style="width: 80px; height: 80px"
+                  />
+                  <div class="text-start ps-4">
+                    <h5 class="mb-3">{{demand.title}}</h5>
+                    <span class="text-truncate me-3"
+                      ><i class="fa fa-map-marker-alt text-primary me-2"></i
+                      >@{{demand.author.username}}</span
+                    >
+                    <p class="animated fadeIn mb-4 pb-2">{{demand.content}}</p>
+                    <!-- <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span> -->
+                  </div>
+                </div>
+                <div
+                  class="col-lg-6 col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center"
+                >
+                  <div class="d-flex mb-3">
+                    <a class="btn btn-dark" href="">Répondre</a>
+                  </div>
+                  <small class="text-truncate"
+                    ><i class="far fa-calendar-alt text-primary me-2"></i
+                    >{{demand.date_added}}</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="col-12 text-center">
+          <a class="btn btn-primary py-3 px-5" href="">Voir plus</a>
+        </div>
+      </div>
+    </div>
+    <!-- offers -->
+    <div id="tab-2" class="tab-pane fade show p-0">
+      <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+        Offres récentes
+      </h1>
+      <div class="row g-4">
+        {% for offer in offers %}
+        <div class="col-lg-4 col-md-6">
+          <div class="container">
+            <div class="job-item p-4 mb-4">
+              <div class="row g-4">
+                <div
+                  class="col-lg-6 col-sm-12 col-md-8 d-flex align-items-center"
+                >
+                  <img
+                    class="flex-shrink-0 img-fluid border rounded"
+                    src="{% static 'img/offer.jpg' %}"
+                    alt=""
+                    style="width: 80px; height: 80px"
+                  />
+                  <div class="text-start ps-4">
+                    <h5 class="mb-3">{{offer.title}}</h5>
+                    <span class="text-truncate me-3"
+                      ><i class="fa fa-map-marker-alt text-primary me-2"></i
+                      >@{{offer.author.username}}</span
+                    >
+                    <p class="animated fadeIn mb-4 pb-2">{{offer.content}}</p>
+                    <!-- <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span> -->
+                  </div>
+                </div>
+                <div
+                  class="col-lg-6 col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center"
+                >
+                  <div class="d-flex mb-3">
+                    <a class="btn btn-dark" href="">Répondre</a>
+                  </div>
+                  <small class="text-truncate"
+                    ><i class="far fa-calendar-alt text-primary me-2"></i
+                    >{{offer.date_added}}</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="col-12 text-center">
+          <a class="btn btn-primary py-3 px-5" href="">Voir plus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
